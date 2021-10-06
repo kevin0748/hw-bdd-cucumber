@@ -18,7 +18,11 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
+  # put page.body
+  
+  body = page.body.gsub("\n", "")
+  matchResult = body.match(/#{e1}.*#{e2}/)
+  expect(matchResult).not_to eq(nil)
 end
 
 # Make it easier to express checking or unchecking several boxes at once
